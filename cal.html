@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #efeff2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .calsi {
+            width: 300px;
+            height: 550px;
+            box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            background: #222520;
+            overflow: hidden;
+        }
+
+        form input {
+            width: 100%;
+            height: 150px;
+            border: none;
+            border-radius: 12px;
+            font-size: 2rem;
+            padding: 1rem;
+            color: #efeff2;
+            background: black;
+            text-align: right;
+            pointer-events: none;
+
+        }
+
+        .screen {
+            width: 100%;
+            height: 150px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        button {
+            /* flex: 0 0 22%; */
+            margin: 5px 0;
+            border: 1px solid #000;
+            width: 60px;
+            height: 59px;
+            font-size: 22px;
+            font-weight: 600;
+            border-radius: 5px;
+            padding: 2px;
+
+
+        }
+
+        .btn-yellow {
+            background-color: rgb(237, 139, 47);
+            color: #fff;
+        }
+
+        .btn-gray {
+            background-color: gray;
+            color: #fff;
+        }
+
+        .btn-equal {
+            width: 160px;
+            background-color: rgba(30, 113, 30, 0.774);
+            color: #fff;
+
+        }
+
+        .btn-clear {
+            background-color: rgb(238, 80, 80);
+            color: #fff;
+        }
+
+        .btn {
+            flex: 3px 3px;
+            flex-direction: wrap;
+
+        }
+    </style>
+</head>
+
+<body>
+    <section class="calsi">
+        <form>
+            <input type="text" class="screen">
+        </form>
+        <div class="buttons">
+            <button type="button" class="btn btn-yellow" id="+">+</button>
+            <button type="button" class="btn btn-yellow" id="-">-</button>
+            <button type="button" class="btn btn-yellow" id="*">*</button>
+            <button type="button" class="btn btn-yellow" id="/">/</button>
+
+            <button type="button" class="btn btn-grey" id="9">9</button>
+            <button type="button" class="btn btn-grey" id="8">8</button>
+            <button type="button" class="btn btn-grey" id="7">7</button>
+            <button type="button" class="btn btn-grey" id="6">6</button>
+            <button type="button" class="btn btn-grey" id="5">5</button>
+            <button type="button" class="btn btn-grey" id="4">4</button>
+            <button type="button" class="btn btn-grey" id="3">3</button>
+            <button type="button" class="btn btn-grey" id="2">2</button>
+            <button type="button" class="btn btn-grey" id="1">1</button>
+            <button type="button" class="btn btn-grey" id="0">0</button>
+            <button type="button" class="btn btn-grey" id=".">.</button>
+            <!-- <button type="button" class="btn btn-grey"id="00">00</button> -->
+            
+
+            <button type="button" class="btn btn-clear"id="clear">AC</button>
+            <button type="button" class="btn btn-clear"id="del">DE</button>
+            <button type="button" class="btn btn-equal"id="equal  ">=</button>
+        </div>
+    </section>
+    <script>
+       
+
+            let buttons = document.querySelectorAll('.btn');
+            let screen = document.querySelector('.screen');
+            let equal = document.querySelector('.btn-equal');
+            let clear = document.querySelector('.btn-clear');
+
+            let string="";
+            // let arr= Array.from(buttons);
+            buttons.forEach(button=>{
+                button.addEventListener('click',(e)=>{
+                    if(e.target.innerHTML == '='){
+                        string = eval(string);
+                        screen.value=string;
+                    }
+                    else if(e.target.innerHTML=='AC'){
+                        string="";
+                        screen.value=string;
+                    }
+                    else if(e.target.innerHTML=='DE'){
+                        string=string.slice(0,-1);
+                        screen.value=string;
+                    }
+                    else{
+                        string+=e.target.innerHTML;
+                        screen.value=string;
+                    }
+                })
+            })
+
+    
+    </script>
+
+</body>
+
+</html>
